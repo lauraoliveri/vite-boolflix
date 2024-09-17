@@ -1,31 +1,41 @@
 <script>
+import { store } from '../store.js';
 export default {
   data() {
     return { 
-      message: 'Template Vite + Vue'
+      
     }
   }
 }
 </script>
 
 <template>
-  <header>
-    <h1>
-      {{ message }}
-    </h1>
-  </header>
+      <header>
+          <nav class="navbar fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand text-uppercase">Boolflix</a>
+              <form @submit.prevent=""class="d-flex" role="search">
+                <input v-model="store.SearchMovie" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button type="submit" class="btn btn-dark">Search</button>
+              </form>
+            </div>
+          </nav>
+      </header>
 </template>
 
 <style lang="scss" scoped>
 @use '../assets/scss/partials/variables' as *;
 
-header {
-  background-color: $mainBgColor;
-  text-align: center;
-  padding: 20px 0;
+a {
+  color: red;
+  padding: 10px;
+
+  :hover {
+    color: rgb(255, 255, 255);
+  }
 }
 
-h1 {
-  color: $mainColor;
+nav {
+  background-color: black;
 }
 </style>

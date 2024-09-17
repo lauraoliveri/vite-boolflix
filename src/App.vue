@@ -7,22 +7,23 @@
 */
 // 1) Importazione del componente
 import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
+import SingleMovie from './components/SingleMovie.vue';
+
 
 export default {
   data() {
     return { 
-      count: 0
+  
     }
   },
   // 2) Dichiarazione del componente
   components: {
-    AppHeader
+    AppHeader,
+    AppMain,
+    SingleMovie
   },
-  methods: {
-    incrementCount() {
-      this.count++;
-    }
-  }
+    
 }
 </script>
 
@@ -32,9 +33,10 @@ export default {
     <AppHeader />
     
     <main>
-      <button class="btn btn-primary" @click="incrementCount()">
-        {{ count }}
-      </button>
+     <AppMain/>
+
+     <SingleMovie/>
+
     </main>
   </div>
 </template>
