@@ -1,12 +1,25 @@
 <script>
 
-
+export default {
+    name: "SingleMovie",
+    data: function () {
+        return {
+         
+        };
+    },
+    methods: {
+        
+    },
+    props: {
+        "Movie": Object
+    }
+}
 </script>
 
 
 <template>
     <div>
-
+        {{ Movie.title }}
 
     </div>
 </template>

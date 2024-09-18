@@ -10,13 +10,15 @@ import { store } from './store.js';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import SingleMovie from './components/SingleMovie.vue';
+import axios from 'axios';
 
 
 
 export default {
   data() {
     return { 
-      store
+      store,
+      Movies: []
     }
   },
   // 2) Dichiarazione del componente
@@ -25,19 +27,27 @@ export default {
     AppMain,
     SingleMovie
   },
+  created() {
+    this.performSearch();
+  },
   methods: {
       performSearch() {
         axios
         .get('https://api.themoviedb.org/3/search/movie', {
         params: {
           api_key: 'e1d9f6392b861b67ce93fbe118964004',
-          query: ''
+          query: this.search
           
         }
+      })
+        .then((res)=> {
+          console.log(res);
+          
+          this.Movies= (res.data.results) 
+        })
         .catch((err) => {
           console.error(err);
         })
-      })
 
         
     }
@@ -54,7 +64,7 @@ export default {
     <main>
      <AppMain/>
 
-     <SingleMovie/>
+     <SingleMovie v-for="(movie, i) in Movies" :key="i" :Movie="movie"/>
 
     </main>
   </div>
