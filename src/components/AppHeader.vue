@@ -3,10 +3,17 @@ import { store } from '../store.js';
 export default {
   data() {
     return { 
-      
+      store
+    }
+  },
+  methods: {
+    search() {
+      // evento per fare la ricerca che invio al genitore AppVue 
+      this.$emit('search', this.query);
     }
   }
 }
+
 </script>
 
 <template>
@@ -14,7 +21,7 @@ export default {
           <nav class="navbar fixed-top">
             <div class="container-fluid">
               <a class="navbar-brand text-uppercase">Boolflix</a>
-              <form @submit.prevent=""class="d-flex" role="search">
+              <form @submit.prevent="search" class="d-flex" role="search">
                 <input v-model="store.SearchMovie" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button type="submit" class="btn btn-dark">Search</button>
               </form>
